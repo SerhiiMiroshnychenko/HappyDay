@@ -1,0 +1,16 @@
+.idea
+.venv
+.env
+.DS_store
+happy_site/migrations
+happy_bot/migrations
+db.sqlite3
+pg_data
+
+/happy_bday/happy_site/migrations/
+/venv/
+/happy_bot/message_arg.json
+/media/photos
+/message_arg.json
+
+*/__pycache__/
