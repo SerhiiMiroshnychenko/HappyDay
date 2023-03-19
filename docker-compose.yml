@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: './docker_start'
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # SECRET_KEY: ${SECRET_KEY}
+      # TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      # ADMIN_ID: ${ADMIN_ID}
+      # DEBUG: ${DEBUG}
+      # DATABASE_NAME: ${DATABASE_NAME}
+    depends_on:
+      - db
