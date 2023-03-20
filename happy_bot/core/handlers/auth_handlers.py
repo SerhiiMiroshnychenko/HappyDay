@@ -91,7 +91,6 @@ def get_user(username: str, password: str) -> User or None:
     :param password: str
     :return: User or None
     """
-
     user = None
     try:
         user = authenticate(username=username, password=password)
@@ -109,5 +108,4 @@ def set_telegram_chat_id(user: User, telegram_chat_id: str) -> None:
     :param telegram_chat_id: str
     :return: None
     """
-
     Profile.objects.update_or_create(user=user, telegram_chat_id=telegram_chat_id)
