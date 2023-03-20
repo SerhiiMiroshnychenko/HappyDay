@@ -86,7 +86,8 @@ class LoginUserTestCase(TestCase):
     def test_login_page_loads(self):
         """
         The test_login_page_loads function tests that the login page loads.
-        It does this by making a GET request to the login URL, and then asserting that the response status code is 200 (OK) and that we used the correct template.
+        It does this by making a GET request to the login URL, and then
+        asserting that the response status code is 200 (OK) and that we used the correct template.
 
         :param self: Access the class attributes and methods
         :return: A response object
@@ -97,7 +98,7 @@ class LoginUserTestCase(TestCase):
 
     def test_user_can_login(self):
         """
-        The test_user_can_login function tests that a user can login to the site.
+        The test_user_can_login function tests that a user can log in to the site.
         It does this by creating a new user, logging them in, and checking that they are redirected to the home page.
 
         :param self: Access the attributes and methods of the class in python
@@ -130,20 +131,22 @@ class AddBDayTestCase(TestCase):
         It creates a new user and a new BDay post, which will be used for testing.
 
         :param self: Make the function a method of the class
-        :return: A test client, which is a python class that acts as a dummy web browser, allowing you to test your views and interact with your django-powered application programmatically
+        :return: A test client, which is a python class that acts as a dummy web browser,
+         allowing you to test your views and interact with your django-powered application programmatically
         """
         self.url = reverse('add_bday')
         self.user = User.objects.create_user(username='test_user', password='12345')
         self.data = {
-            'title': 'Test BDay',
-            'content': 'This is a test BDay post.',
+            'title': "Test BDay",
+            'content': "This is a test BDay post.",
             'date': timezone.now().date(),
         }
 
     def test_add_bday_view(self):
         """
         The test_add_bday_view function tests the add_bday view.
-        It checks that a user can create a new BDay post with valid data, and that they are redirected to the correct page.
+        It checks that a user can create a new BDay post with valid data,
+        and that they are redirected to the correct page.
 
         :param self: Access the attributes and methods of the class in python
         :return: A 302 status code and redirects to the b_days view
@@ -160,9 +163,11 @@ class AddBDayTestCase(TestCase):
     def test_add_bday_form(self):
         """
         The test_add_bday_form function tests the AddBDayForm class.
-        It creates a form with data from self.data, which is defined in setUp().
+        It creates a form with data from self. data, which is defined in setUp().
         The test checks that the form is valid and then saves it to bday without committing it to the database yet.
-        Then, we assign bday's user attribute to self.user (the user created in setUp()). Finally, we save bday again and check that its title, content and user attributes are equal to what they should be.
+        Then, we assign b-day's user attribute to self. user (the user created in setUp()).
+        Finally, we save bday again and check that its title, content and user attributes
+        are equal to what they should be.
 
         :param self: Refer to the instance of the class
         :return: The form
