@@ -41,7 +41,7 @@ async def start_bot(bot: Bot) -> None:
     """
 
     await set_commands(bot)
-    text = 'Бот запущено.'
+    text: str = 'Бот запущено.'
     await bot.send_message(ADMIN_ID, text=text)
     if users := await get_users():
         for user in users:
@@ -56,7 +56,7 @@ def get_users() -> QuerySet or None:
     :return: QuerySet or None
     """
 
-    users = None
+    users: QuerySet or None = None
     try:
         users = Profile.objects.all()
         for user in users:
@@ -76,7 +76,7 @@ async def stop_bot(bot: Bot) -> None:
     :return: None
     """
 
-    text = 'Бот зупинено.'
+    text: str = 'Бот зупинено.'
     await bot.send_message(ADMIN_ID, text=text)
 
 
@@ -124,7 +124,7 @@ async def get_message(message: Message) -> None:
     """
     Реакція на надсилання користувачем різних типів повідомлень
     """
-    message_types = []
+    message_types: list[str] = []
     if message.text:
         message_types.append(f'текст: " <b>{message.text}</b> ".')
     if message.photo:
@@ -150,10 +150,10 @@ async def get_message(message: Message) -> None:
     if not message_types:
         message_types.append('повідомлення')
 
-    message_to_user = 'Ви відправили мені:'
+    message_to_user: str = 'Ви відправили мені:'
     await message.answer(message_to_user)
     for message_type in message_types:
         await message.answer(f' - {message_type}')
 
-    json_message = message.dict()
+    json_message: dict = message.dict()
     await write_file(json_message)
